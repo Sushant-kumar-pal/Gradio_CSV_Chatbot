@@ -1,69 +1,61 @@
-# Chatbot Project - README
+# Gradio-based CSV Question Answering and Visualization Application  
+![Screenshot 2025-03-13 012600](https://github.com/user-attachments/assets/a0023c13-708a-4860-af89-db43486d6e6e)  
 
-## Overview
-This project is a chatbot application built using Python and various libraries for data handling, visualization, and AI-related enhancements. It provides an interactive interface for users to communicate with the chatbot efficiently.
+## Overview  
+This project is a **Gradio-based application** that enables users to **upload a CSV file, ask questions** (both textual and numerical) about its contents, and receive responses from a **local Large Language Model (LLM)**. Additionally, the application provides **graph plotting capabilities**, ensuring all visualizations are displayed directly within the Gradio interface.  
 
-## Installation
-To install the required dependencies, run the following command:
+## Features  
+- **CSV File Upload & Handling**  
+  - Accepts CSV file uploads with validation.  
+  - Handles parsing errors gracefully.  
+- **Question Answering via LLM**  
+  - Users can input both textual and numerical questions related to the CSV data.  
+  - Uses **Ollama + Pydantic AI** to generate answers efficiently.  
+  - Recommended LLM model: **Llama 3.2B using Ollama framework**  
+- **Graph Plotting & Visualization**  
+  - Supports generating **various types of graphs** based on CSV data.  
+  - All graphs are embedded **within the Gradio app** interface for seamless interaction.  
 
-```sh
-pip install -r requirements.txt
-```
+## Technical Requirements  
+- **Frontend:** [Gradio](https://www.gradio.app/) for an interactive user interface.  
+- **LLM Agent:** [Pydantic AI](https://docs.pydantic.dev/latest/) for structured AI query responses.  
+- **LLM Backend:** [Ollama](https://ollama.com/) for local execution of language models.  
+- **Modular Architecture:**  
+  - File handling  
+  - Query processing (Pydantic AI)  
+  - LLM integration (Ollama)  
+  - Graph plotting  
+  - Robust error handling for CSV parsing, user input validation, and LLM failures.  
 
-## Dependencies
-The project relies on the following Python libraries:
+## Installation & Setup  
+1. **Clone the Repository:**  
+   ```sh
+   git clone https://github.com/Adarsh1415/Gradio_based_CSV_Chatbot
+   cd Gradio_based_CSV_Chatbot
+   ```  
+2. **Install Dependencies:**  
+   ```sh
+   pip install -r requirements.txt
+   ```  
+3. **Run Llama 3.2 on Ollama Locally:**  
+   First, install Ollama following the instructions [here](https://ollama.com/).  
+   Then, pull the Llama 3.2 model and run it:  
+   ```sh
+   ollama pull llama3:2b
+   ollama run llama3:2b
+   ```  
+4. **Run the Application:**  
+   ```sh
+   python main.py
+   ```  
 
-### 1. Gradio
-**Gradio** is used to create an easy-to-use web interface for the chatbot.
-- Documentation: [https://www.gradio.app/](https://www.gradio.app/)
+## Notes  
+- **Sample CSV:** The application works with datasets like **housing price datasets** from Kaggle, containing both **numerical and string data**.  
+- **Max File Size:** 25MB.  
 
-### 2. Pandas
-**Pandas** is used for handling structured data efficiently within the chatbot.
-- Documentation: [https://pandas.pydata.org/](https://pandas.pydata.org/)
+## Working  
+![Screenshot 2025-03-13 012623](https://github.com/user-attachments/assets/e0df116f-dfc9-4f90-b0eb-eccf9d2793b3)  
 
-### 3. Matplotlib
-**Matplotlib** is used for data visualization and graphical representation.
-- Documentation: [https://matplotlib.org/](https://matplotlib.org/)
+![Screenshot 2025-03-13 012843](https://github.com/user-attachments/assets/f3336660-4bdb-4fbf-a89a-2193923821e1)  
 
-### 4. Pydantic
-**Pydantic** ensures data validation and settings management using Python type annotations.
-- Documentation: [https://docs.pydantic.dev/](https://docs.pydantic.dev/)
-
-### 5. Pydantic-AI
-**Pydantic-AI** extends Pydantic with AI-related enhancements for data processing.
-- Documentation: (Check relevant sources for latest updates)
-
-## Usage
-After installing the dependencies, you can run the chatbot using:
-
-```sh
-python chatbot.py
-```
-
-To use the chatbot interactively:
-
-```python
-import gradio as gr
-import pandas as pd
-import matplotlib.pyplot as plt
-from pydantic import BaseModel
-import pydantic_ai
-
-def chatbot_response(user_input):
-    return f"You said: {user_input}"
-
-gr.Interface(fn=chatbot_response, inputs="text", outputs="text").launch()
-```
-
-## Features
-- Interactive chatbot interface using Gradio
-- Data handling capabilities with Pandas
-- Visualization support using Matplotlib
-- AI-enhanced data processing with Pydantic-AI
-
-## License
-This project is open-source, and you can modify or distribute it as per your requirements.
-
----
-For any issues, please check the official documentation links above or seek community support.
-
+![Screenshot 2025-03-13 013104](https://github.com/user-attachments/assets/d33780b7-20df-42aa-83a3-7dc8f46af355)
